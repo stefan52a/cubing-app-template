@@ -1,14 +1,14 @@
 {
   "name": "cubing-app-template",
   "scripts": {
-    "build": "node -e \"import(\"\"barely-a-dev-server\"\").then(s => s.barelyServe({entryRoot: \"\"src\"\", dev: false, outDir: \"\"dist/web\"\"}))\"",
-    "dev": "node -e \"import(\"\"barely-a-dev-server\"\").then(s => s.barelyServe({entryRoot: \"\"src\"\"}))\""
+    "build": "node -e 'import(\"barely-a-dev-server\").then(s => s.barelyServe({entryRoot: \"src\", dev: false, outDir: \"dist/web\"}))'",
+    "dev": "node -e 'import(\"barely-a-dev-server\").then(s => s.barelyServe({entryRoot: \"src\"}))'",
+    "clean": "rm -rf ./dist"
   },
   "dependencies": {
     "cubing": "^0.29.1"
   },
   "devDependencies": {
-    "barely-a-dev-server": "^0.2.6",
-    "typescript": "^4.8.3"
+    "barely-a-dev-server": "^0.2.6"
   }
 }
