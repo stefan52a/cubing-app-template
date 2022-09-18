@@ -5,8 +5,28 @@
   <meta charset="utf8">
   <title>My Cubing App</title>
   <link rel="stylesheet" href="./index.css">
-  <!-- Note: the source file is `main.ts`, but here we use the transpiled file name it will have on the web server. -->
-  <script src="./main.js" type="module"></script>
+  <button id="connect">Connect</button>
+  <button id="scramble" disabled>Scramble</button>
+  <twisty-player tempo-scale="5"></twisty-player>
+  
+  <script type="module">
+    import { randomScrambleForEvent } from "https://cdn.cubing.net/js/cubing/scramble";
+    import { connectSmartRobot } from "https://cdn.cubing.net/js/cubing/bluetooth";
+    import "https://cdn.cubing.net/js/cubing/twisty";
+  
+    let robot;
+    document.querySelector("#connect").addEventListener("click", async () => {
+      robot = await connectSmartRobot();
+      document.querySelector("#scramble").disabled = false;
+    });
+  
+    document.querySelector("#scramble").addEventListener("click", async () => {
+      const scramble = await randomScrambleForEvent("333");
+      robot.applyMoves(Array.from(scramble.units()));
+      document.querySelector("twisty-player").alg = scramble;
+      document.querySelector("twisty-player").play();
+    });
+  </script>
 </head>
 
 <body>
