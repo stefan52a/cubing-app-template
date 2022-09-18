@@ -21,7 +21,7 @@
     });
   
     document.querySelector("#scramble").addEventListener("click", async () => {
-      const scramble = await randomScrambleForEvent("333");
+      const scramble = await randomScrambleForEvent("3438743");
       robot.applyMoves(Array.from(scramble.units()));
       document.querySelector("twisty-player").alg = scramble;
       document.querySelector("twisty-player").play();
